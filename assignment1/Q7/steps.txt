@@ -1,0 +1,45 @@
+############################################################################
+Question 7:
+Create an Autoscaling group and configure launch configuration it with Amazon linux 
+ami and userdata to deploy basic website.
+############################################################################
+
+Steps:
+
+1.  Log in to amazon aws account
+2.  Go to EC2 Instance
+3.  Scelet Launch Configurations from left window
+4.  Click on Create Launch Configuration and give it a name "jeevans_configuration"
+5.  Choose AMI as "Amazon linux ami"
+6.  Choose Instance Type
+7.  Give name to configuration.
+8.  Choose IAM Role from dropdown "full_acess"
+9.  Go to Advanced Setting
+	9.1 Add User data todeploy web server
+	9.2 Below is the code
+		#!/bin/bash
+		yum update -y
+		amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+		yum install -y httpd mariadb-server
+		systemctl start httpd
+		systemctl enable httpd
+		usermod -a -G apache ec2-user
+		chown -R ec2-user:apache /var/www
+		chmod 2775 /var/www
+		find /var/www -type d -exec chmod 2775 {} \;
+		find /var/www -type f -exec chmod 0664 {} \;
+		echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+10.  Choose The storage if needed.
+11. Configure the Security Group.
+12. Add SSH form "my ip" and HTTP from "anywhere"
+13. Then Review and launch configuration.
+14. Choose Keypair existin or new if needed.
+
+15 Create Autoscaling group using launch configuration
+	15.1  Give name to the group "jeevans_group"
+	15.2  Choose Network.
+	15.3  Choose Subnets one or more.
+	15.4  Configure Scaling policies as "keep this group at its initial size"
+	15.5  Configure Notification "You can Configure mail Services" *not_authorized
+	15.6  Add tags Review and Create Autoscaling group
+

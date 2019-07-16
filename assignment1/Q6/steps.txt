@@ -1,0 +1,21 @@
+########################################################################
+Question 6 :
+Create ELB with target type as IP, registering each instance to the ELB 
+########################################################################
+
+Solution Steps:
+
+1.  Go to EC2
+2.  Select Load Balancer in left side
+3.  Select Create Lad Balancer
+4.  Configure Security Groups 
+	4.1  Create New Security Group
+	4.2  SSH from My IP
+	4.3  HTTP Allow from all sources
+5.  Configure Routing
+	5.1  Select New Target Group
+	5.2  Give it a name "newloadbalancing"
+	5.3  Select Target Type IP
+6.  Register Targets avilable in the Selected Network 
+7.  Review The load balancer
+8.  Launch Load balancer

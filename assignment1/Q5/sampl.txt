@@ -1,0 +1,3 @@
+This is a sample txt file for the experiment to copy two files between two buckets in s3.
+The file named sample.txt is copied from s3bucket1asg1 to s3bucket2asg1
+

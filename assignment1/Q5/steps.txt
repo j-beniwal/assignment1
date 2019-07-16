@@ -1,0 +1,10 @@
+########################################################################
+Question 5. 
+Write a lambda function to copy an object from one s3 bucket to another.
+#######################################################################
+
+Solution Steps :
+
+1.  Create a bucket named "s3bucket1asg1"
+2.  Create another bucket named "s3bucket2asg1"
+3.   

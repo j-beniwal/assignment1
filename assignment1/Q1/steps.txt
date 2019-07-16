@@ -1,0 +1,37 @@
+###############################################################################
+Question 1. 
+# Create an instance, install apache server and add an index.html file and view that file in the browser. 
+# Take snapshot of this instance and deploy it in another region.
+###############################################################################
+
+Solution Steps :
+
+# Create an Instance
+1. Created Instance in N.Virginia Region with desired configurations
+2. Installed Apache from command line using (sudo apt install apache2)
+3. Adjusted the firewall using "ufw" command
+4. Launche apache using (sudo ufw allow 'Apache')
+5. Checked the web server on Desired IP
+6. Set up a virtual host
+	6.1  Create a directory if.com at /var/www/if.com/html
+	6.2  Change the permissions of the directory
+	6.3  Create a html file "index.html" in /var/www/if.com/html/index.html
+	6.4  Write html code in the index.html
+	6.5  Make virtual host file at /etc/apache2/sites-available/if.com.conf
+	6.6  Write the configuration Code in if.com.conf
+	6.7  Enable the if.com.conf file using "sudo a2ensite if.com.conf"
+	6.8  Disable the default site 
+	6.9  Test the configurations
+	6.10 Restart Apache to install changes "sudo systemctl restart apache2"
+7. Take a snapshot of the EC2 instance present in N.Virginia and launch a instance in Ohio region using that Snapsshot
+	7.1  create snapshot
+	7.2  stop instance
+	7.3  copy the snapshot in desired region
+	7.4  change the region to the desired region
+	7.5  go to snapshots
+	7.6  click the action create image
+	7.7  choose the required configurations
+	7.8  launch the instance
+8. Log in to the Ohio EC2 Instance from the command line
+9. Restart Apache Server 
+
