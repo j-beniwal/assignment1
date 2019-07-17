@@ -1,0 +1,19 @@
+#################################################################################
+Question 5:
+Automate the process of setting up passwordless SSH between two AWS EC2 instances.
+#################################################################################
+
+Steps:
+
+1.  Create Two instances "JeevansInstanceA" and "JeevansInstanceB"
+	1.1 They should be in same subnet 
+ 	1.2 They should have same security group
+2.  Open ports between them, make sure instances can communicate with each other.
+3.  Log into one of the instance you want to connect with other using ssh say "JeevansInstanceA"
+4.  For the commucnication the key need to be generated
+5.  For key generation RSA Algorithm is used.
+6.  Run the command to generaate rsa key "ssh-keygen -t rsa -N "" -f /home/ubuntu/.ssh/id rsa 
+7.  change the premission of the key to 600 "chmod 600 .ssh/my.key
+8.  Copy the public key to the instance you want to connect with i.e JeevansInstanceB
+9.  Use command "cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/my.key ubuntu@10.0.0.X "cat >> ~/.ssh/authorized_keys"
+
