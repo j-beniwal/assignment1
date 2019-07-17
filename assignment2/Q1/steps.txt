@@ -1,0 +1,6 @@
+##########################################################################################
+Question 1:
+Create an instance, install apache server(using start-up script) and add an index.html file.
+Create a robust web server with the use of auto scaling and load balancing.
+#########################################################################################
+

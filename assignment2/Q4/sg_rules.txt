@@ -1,0 +1,6 @@
+#########################################################################################
+Launch 3 different instances in each of the above private subnets. 
+Launch a bastion server in one of the public subnets. 
+Restrict the security groups of the private instances to allow SSH only from the bastion host 
+and restrict the access to the Bastion host to Quantiphi IP Range.
+########################################################################################
