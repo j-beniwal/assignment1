@@ -1,0 +1,12 @@
+##########################################################################################
+Question 1:
+Create an instance, install apache server(using start-up script) and add an index.html file.
+Create a robust web server with the use of auto scaling and load balancing.
+#####################################################################################
+1. Select ami and add start-up script to start apache server
+		Start up script attached 
+2. Launch EC2 instance
+3. Create new Application Load Balancer and add HTTP as listener over the vpc in which the EC2 instances are created
+4. Create a new Security Group to allow HTTP access over internet for EC2 instance as Target
+5. Select targets of EC2 instances to load balance
+6. Create new Auto Scaling Configuration for EC2 Instance and assign it the EC2 Instance Security group
