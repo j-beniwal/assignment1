@@ -4,3 +4,129 @@ Launch a bastion server in one of the public subnets.
 Restrict the security groups of the private instances to allow SSH only from the bastion host 
 and restrict the access to the Bastion host to Quantiphi IP Range.
 ########################################################################################
+
+1. Create a bastian host and launch in public subnet
+2. Security Croup of Private Subnet
+	Inbound only from the bastian host sg
+	Outbound
+3. Using SSH tunneling to ssh to private subnet via public subnet without private keys
+4. add identity on local machine
+	ssh-add -k /home/.ssh/jeevan_q4.pem
+	Identity added: /home/.ssh/jeevan_q4.pem (/home/.ssh/jeevan_q4.pem)
+5. Ssh to private instance via public instance in bastian host
+6. Security group rules
+
+Security gropu rules for baastion host
+{
+    "SecurityGroups": [
+        {
+            "Description": "launch-wizard-334 created 2019-07-16T08:31:06.528+05:30"
+            "GroupName": "launch-wizard-ec2",
+            "IpPermissions": [
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "59.152.53.168/30",
+                            "Description": "ssh to bastion "
+                        },
+                        {
+                            "CidrIp": "59.152.53.104/29",
+                            "Description": "ssh to bastion"
+                        },
+                        {
+                            "CidrIp": "59.152.53.200/29",
+                            "Description": "ssh to bastion"
+                        },
+                        {
+                            "CidrIp": "59.152.53.120/29",
+                            "Description": "ssh to bastion"
+                        },
+                        {
+                            "CidrIp": "59.152.52.104/29",
+                            "Description": "ssh to bastion"
+                        },
+                        {
+                            "CidrIp": "59.152.52.152/29",
+                            "Description": "ssh to bastion"
+                        },
+                        {
+                            "CidrIp": "59.152.52.172/30",
+                            "Description": "ssh to bastion"
+                        },
+                        {
+                            "CidrIp": "202.122.21.69/32",
+                            "Description": "ssh to bastion"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "488599217858",
+            "GroupId": "sg-03d63ce2fe2f53e32",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "VpcId": "vpc-0615bf86862455181"
+        }
+    ]
+}
+
+#######################################################################################################
+Security group rules for private instances
+
+{
+    "SecurityGroups": [
+        {
+            "Description": "launch-wizard-334 created 2019-07-16T08:31:45.528+05:30"
+            "GroupName": "launch-wizard-ec2-private"
+            "IpPermissions": [
+                {
+                    "FromPort": 22,
+                    "IpProtocol": "tcp",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "172.31.81.28/32",
+                            "Description": "ssh from bastion "
+                        },
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "ToPort": 22,
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "OwnerId": "488599217855",
+            "GroupId": "sg-0d4d504d3db52d883",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": [],
+                    "UserIdGroupPairs": []
+                }
+            ],
+            "VpcId": "vpc-0615bf86862455181"
+        }
+    ]
+}
+
